@@ -3,44 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Panduan Solat Tarawih Mudah untuk Semua</title>
+    <title>Panduan Solat Tarawih JAKIM</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(to bottom, #e0f7fa, #b2ebf2);
-            color: #333;
+            background: linear-gradient(to bottom, #e3f2fd, #bbdefb); /* Gradient biru lembut */
+            color: #212121;
             text-align: center;
-            padding: 15px;
+            padding: 20px;
             margin: 0;
             min-height: 100vh;
-            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
         header {
-            background: linear-gradient(to right, #ffecb3, #ffe082);
+            background: rgba(255, 255, 255, 0.2); /* Glass effect */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 20px;
-            padding: 20px 10px;
+            padding: 15px;
             margin-bottom: 20px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
         }
         h1 {
-            color: #ef6c00;
+            color: #1976d2; /* Biru iOS-like */
             font-size: 2em;
             margin: 0;
         }
         #intro {
             font-size: 1.2em;
             margin: 15px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(8px);
+            border-radius: 15px;
         }
         #startBtn {
-            background: linear-gradient(#81c784, #66bb6a);
+            background: linear-gradient(#2196f3, #1976d2); /* Biru iOS */
             color: white;
             border: none;
-            padding: 18px 50px;
+            padding: 15px 40px;
             font-size: 1.5em;
-            font-weight: bold;
             cursor: pointer;
             border-radius: 50px;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
             margin: 20px 0;
             transition: transform 0.2s;
         }
@@ -49,164 +60,115 @@
         }
         #status {
             font-size: 1.2em;
-            color: #d81b60;
+            color: #f50057;
             font-weight: bold;
         }
         #currentStep {
-            background: white;
-            border: 3px solid #ffd54f;
-            border-radius: 20px;
-            padding: 20px;
+            background: rgba(255, 255, 255, 0.25); /* Glassmorphism */
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 25px;
+            padding: 25px;
             margin: 20px auto;
-            max-width: 95%;
-            font-size: 1.5em; /* Lebih besar untuk mobile */
-            line-height: 1.7;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            max-width: 85%;
+            font-size: 1.6em;
+            line-height: 1.8;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             direction: rtl;
             overflow-y: auto;
-            max-height: 65vh;
+            max-height: 60vh;
+            transition: all 0.3s ease;
         }
         #currentStep h2 {
-            color: #7b1fa2;
-            font-size: 1.6em;
+            color: #0d47a1;
+            font-size: 1.7em;
             margin: 0 0 15px;
             direction: ltr;
         }
+        #nextBtn {
+            background: linear-gradient(#ffeb3b, #ffc107); /* Kuning cerah */
+            color: #333;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: 15px;
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.3);
+        }
         #result {
             font-size: 1em;
-            color: #555;
+            color: #757575;
             margin-top: 10px;
         }
-        .emoji {
-            font-size: 1.6em;
+        /* Landscape mode for phone */
+        @media (orientation: landscape) {
+            body { flex-direction: row; padding: 10px; }
+            #currentStep { max-width: 70%; font-size: 1.4em; padding: 20px; max-height: 80vh; }
+            header, #intro { max-width: 60%; }
         }
         @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            #currentStep { font-size: 1.4em; padding: 15px; }
-            #startBtn { padding: 15px 40px; font-size: 1.4em; }
-            body { font-size: 16px; }
+            #currentStep { font-size: 1.4em; }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Panduan Solat Sunat Tarawih Mudah</h1>
+        <h1>Panduan Sembahyang Sunat Tarawih JAKIM</h1>
     </header>
     
-    <p id="intro">Panduan asas untuk solat Tarawih 2 rakaat penuh. Baca kuat-kuat. Bila habis Al-Fatihah + surah pendek, sebut <strong>"Allahu Akbar"</strong> untuk auto ke langkah seterusnya (takbir tak ditulis supaya tak double). Mikrofon akan dengar suara. Sesuai untuk semua orang! 🌙🕌</p>
+    <div id="intro">Arahan: Baca bacaan penuh dengan kuat. Habis Al-Fatihah, sebut "Amin" untuk terus ke surah pendek. Sebut "Allahu Akbar" untuk takbir ke langkah seterusnya. Mikrofon phone akan dengar suara kamu. Gunakan butang 'Next' jika terskip. Latihan 2 rakaat penuh mengikut panduan JAKIM (surah malam 1-15). 🌙🕌</div>
     
     <button id="startBtn">Mulakan Mikrofon</button>
     
-    <p id="status">Tekan butang & izinkan mikrofon...</p>
+    <p id="status">Tekan & izinkan mikrofon...</p>
     
     <div id="currentStep"></div>
+    <button id="nextBtn" style="display:none;">Next Step</button>
     
     <p id="result"></p>
 
-<grok-card data-id="014326" data-type="image_card" data-plain-type="render_searched_image"  data-arg-size="LARGE" ></grok-card>
-
-
-
-<grok-card data-id="413547" data-type="image_card" data-plain-type="render_searched_image"  data-arg-size="LARGE" ></grok-card>
-
-
-
-<grok-card data-id="493fd2" data-type="image_card" data-plain-type="render_searched_image"  data-arg-size="LARGE" ></grok-card>
-
-
-
-<grok-card data-id="4f4360" data-type="image_card" data-plain-type="render_searched_image"  data-arg-size="LARGE" ></grok-card>
-
-
-
-<grok-card data-id="6773df" data-type="image_card" data-plain-type="render_searched_image"  data-arg-size="LARGE" ></grok-card>
-
-
-
-<grok-card data-id="80f447" data-type="image_card" data-plain-type="render_searched_image"  data-arg-size="LARGE" ></grok-card>
-
-
     <script>
         const steps = [
-            { 
-                title: 'Niat Solat Tarawih (Rakaat 1)', 
-                text: 'أُصَلِّي سُنَّةَ التَّرَاوِيحِ رَكْعَتَيْنِ مَأْمُومًا لِلَّهِ تَعَالَى.<br><br>Sahaja aku sembahyang sunat Tarawih dua rakaat makmum kerana Allah Taala. 🌙<br><br>(Baca niat, kemudian "Allahu Akbar" untuk mulakan)' 
-            },
-            { 
-                title: 'Surah Al-Fatihah (Rakaat 1)', 
-                text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ<br>الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ<br>الرَّحْمَٰنِ الرَّحِيمِ<br>مَالِكِ يَوْمِ الدِّينِ<br>إِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ<br>اهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ<br>صِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ ۘ<br><br>(Habis baca Al-Fatihah, terus baca surah pendek tanpa tunggu)' 
-            },
-            { 
-                title: 'Surah Pendek - Al-Nas (Rakaat 1)', 
-                text: 'قُلْ أَعُوذُ بِرَبِّ النَّاسِ ۝ مَلِكِ النَّاسِ ۝ إِلَٰهِ النَّاسِ ۝ مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ ۝ الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ ۝ مِنَ الْجِنَّةِ وَالنَّاسِ ۝<br><br>(Baca penuh Al-Nas. Habis baca, sebut "Allahu Akbar" untuk ke ruku\') ⭐' 
-            },
-            { 
-                title: 'Ruku\' (Rakaat 1)', 
-                text: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ (3 kali atau lebih)<br><br>Subhana Rabbiyal \'Azim... 🌿' 
-            },
-            { 
-                title: 'I\'tidal (Berdiri semula)', 
-                text: 'سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ ۝ رَبَّنَا وَلَكَ الْحَمْدُ<br><br>Sami\'allahu liman hamidah. Rabbana walakal hamd. 🙌' 
-            },
-            { 
-                title: 'Sujud Pertama', 
-                text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali atau lebih)<br><br>Subhana Rabbiyal A\'la... ✨' 
-            },
-            { 
-                title: 'Duduk Antara Dua Sujud', 
-                text: 'رَبِّ اغْفِرْ لِي وَارْحَمْنِي<br><br>Rabbi ighfir lī warhamnī...' 
-            },
-            { 
-                title: 'Sujud Kedua', 
-                text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)<br><br>Subhana Rabbiyal A\'la... ✨' 
-            },
-            { 
-                title: 'Rakaat Kedua - Al-Fatihah', 
-                text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ ... (sama seperti rakaat 1)<br><br>(Habis Al-Fatihah, terus surah pendek)' 
-            },
-            { 
-                title: 'Surah Pendek - Al-Ikhlas (Rakaat 2)', 
-                text: 'قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ ۝<br><br>(Contoh surah mudah Al-Ikhlas. Habis baca, "Allahu Akbar" untuk ruku\') ⭐' 
-            },
-            { 
-                title: 'Ruku\' (Rakaat 2)', 
-                text: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ (3 kali)<br><br>Subhana Rabbiyal \'Azim...' 
-            },
-            { 
-                title: 'I\'tidal', 
-                text: 'سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ ۝ رَبَّنَا وَلَكَ الْحَمْدُ<br><br>Sami\'allahu liman hamidah. Rabbana walakal hamd.' 
-            },
-            { 
-                title: 'Sujud Pertama (Rakaat 2)', 
-                text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)<br><br>Subhana Rabbiyal A\'la...' 
-            },
-            { 
-                title: 'Duduk Antara Dua Sujud', 
-                text: 'رَبِّ اغْفِرْ لِي وَارْحَمْنِي<br><br>Rabbi ighfir lī warhamnī...' 
-            },
-            { 
-                title: 'Sujud Kedua (Rakaat 2)', 
-                text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)<br><br>Subhana Rabbiyal A\'la...' 
-            },
-            { 
-                title: 'Tahniah! Selesai 2 Rakaat Tarawih 🎉', 
-                text: 'Hebat! Kamu telah selesai 2 rakaat Tarawih penuh. Untuk rakaat seterusnya, ulang dari niat (atau salam kalau nak stop). Boleh tukar surah pendek lain seperti Al-Falaq, Al-Asr, dll mengikut panduan JAKIM. Teruskan ibadat dengan ikhlas! 🕌❤️<br><br>(Untuk 20 rakaat, ulang 10 kali 2 rakaat ini)' 
-            }
+            { title: 'Niat Solat Tarawih', text: 'أُصَلِّي سُنَّةَ التَّرَاوِيحِ رَكْعَتَيْنِ مَأْمُومًا لِلَّهِ تَعَالَى.' },
+            { title: 'Takbiratul Ihram', text: 'الله أكبر' },
+            { title: 'Al-Fatihah (Rakaat 1)', text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\nالْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ\nالرَّحْمَٰنِ الرَّحِيمِ\nمَالِكِ يَوْمِ الدِّينِ\nإِيَّاكَ نَعْبُدُ وَإِيَّاكَ نَسْتَعِينُ\nاهْدِنَا الصِّرَاطَ الْمُسْتَقِيمَ\nصِرَاطَ الَّذِينَ أَنْعَمْتَ عَلَيْهِمْ غَيْرِ الْمَغْضُوبِ عَلَيْهِمْ وَلَا الضَّالِّينَ' },
+            { title: 'Amin', text: 'آمين' },
+            { title: 'Surah Al-Takathur (Rakaat 1)', text: 'أَلْهَاكُمُ التَّكَاثُرُ\nحَتَّىٰ زُرْتُمُ الْمَقَابِرَ\nكَلَّا سَوْفَ تَعْلَمُونَ\nثُمَّ كَلَّا سَوْفَ تَعْلَمُونَ\nكَلَّا لَوْ تَعْلَمُونَ عِلْمَ الْيَقِينِ\nلَتَرَوُنَّ الْجَحِيمَ\nثُمَّ لَتَرَوُنَّهَا عَيْنَ الْيَقِينِ\nثُمَّ لَتُسْأَلُنَّ يَوْمَئِذٍ عَنِ النَّعِيمِ' },
+            { title: 'Ruku\'', text: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ (3 kali)' },
+            { title: 'I\'tidal', text: 'سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ رَبَّنَا وَلَكَ الْحَمْدُ' },
+            { title: 'Sujud Pertama', text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)' },
+            { title: 'Duduk Antara Sujud', text: 'رَبِّ اغْفِرْ لِي وَارْحَمْنِي' },
+            { title: 'Sujud Kedua', text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)' },
+            { title: 'Al-Fatihah (Rakaat 2)', text: 'بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ\n... (sama seperti rakaat 1)' },
+            { title: 'Amin', text: 'آمين' },
+            { title: 'Surah Al-Asr (Rakaat 2)', text: 'وَالْعَصْرِ\nإِنَّ الْإِنْسَانَ لَفِي خُسْرٍ\nإِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ وَتَوَاصَوْا بِالْحَقِّ وَتَوَاصَوْا بِالصَّبْرِ' },
+            { title: 'Ruku\'', text: 'سُبْحَانَ رَبِّيَ الْعَظِيمِ (3 kali)' },
+            { title: 'I\'tidal', text: 'سَمِعَ اللَّهُ لِمَنْ حَمِدَهُ رَبَّنَا وَلَكَ الْحَمْدُ' },
+            { title: 'Sujud Pertama', text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)' },
+            { title: 'Duduk Antara Sujud', text: 'رَبِّ اغْفِرْ لِي وَارْحَمْنِي' },
+            { title: 'Sujud Kedua', text: 'سُبْحَانَ رَبِّيَ الْأَعْلَى (3 kali)' },
+            { title: 'Selesai 2 Rakaat', text: 'Tahniah! Selesai 2 rakaat. Ulang untuk lebih.' }
         ];
 
         let currentIndex = 0;
         const currentStepEl = document.getElementById('currentStep');
+        const nextBtn = document.getElementById('nextBtn');
 
         function showStep(index) {
-            if (index >= steps.length) {
-                currentStepEl.innerHTML = '<h2>Selesai 2 Rakaat! 🎊</h2><p>Selamat! Ulang dari awal untuk rakaat berikutnya. Allah beri ganjaran besar untuk Tarawih. 🌟</p>';
-                return;
-            }
+            if (index >= steps.length) return;
             const step = steps[index];
-            currentStepEl.innerHTML = `<h2>${step.title}</h2><p>${step.text}</p>`;
+            currentStepEl.innerHTML = `<h2>${step.title}</h2><p>${step.text.replace(/\n/g, '<br>')}</p>`;
+            nextBtn.style.display = 'block';
         }
 
         showStep(currentIndex);
+
+        nextBtn.onclick = () => {
+            currentIndex++;
+            showStep(currentIndex);
+        };
 
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         let recognition;
@@ -222,37 +184,40 @@
         const startBtn = document.getElementById('startBtn');
 
         if (!SpeechRecognition) {
-            statusEl.textContent = 'Browser tidak sokong mikrofon. Cuba Chrome.';
+            statusEl.textContent = 'Browser tidak sokong.';
             startBtn.disabled = true;
         } else {
             startBtn.onclick = () => {
                 recognition.start();
-                statusEl.textContent = 'Sedang mendengar... Habis baca surah, sebut "Allahu Akbar" untuk terus!';
+                statusEl.textContent = 'Mendengar... Sebut Amin atau Allahu Akbar.';
                 startBtn.style.background = 'linear-gradient(#4caf50, #388e3c)';
-                startBtn.textContent = 'Sedang Mendengar 🎤';
+                startBtn.textContent = 'Mendengar 🎤';
             };
 
             recognition.onresult = (event) => {
-                let transcript = '';
-                for (let i = event.resultIndex; i < event.results.length; ++i) {
-                    transcript += event.results[i][0].transcript.toLowerCase();
-                }
+                let transcript = event.results[event.results.length - 1][0].transcript.toLowerCase();
                 resultEl.textContent = `Didengar: ${transcript}`;
-                if (transcript.includes('allahu akbar') || transcript.includes('allahuakbar')) {
+                if (transcript.includes('amin')) {
+                    if (steps[currentIndex].title.includes('Al-Fatihah')) {
+                        currentIndex++;
+                        showStep(currentIndex); // Ke Amin
+                        setTimeout(() => {
+                            currentIndex++;
+                            showStep(currentIndex); // Auto ke surah pendek selepas Amin
+                        }, 1000);
+                    }
+                } else if (transcript.includes('allahu akbar') || transcript.includes('allahuakbar')) {
                     currentIndex++;
                     showStep(currentIndex);
-                    resultEl.textContent = 'Dikesan! Ke langkah seterusnya!';
                 }
             };
 
             recognition.onerror = (event) => {
-                statusEl.textContent = `Ralat: ${event.error}. Cuba lagi!`;
+                statusEl.textContent = `Ralat: ${event.error}`;
             };
 
             recognition.onend = () => {
-                if (startBtn.textContent.includes('Mendengar')) {
-                    recognition.start();
-                }
+                if (startBtn.textContent.includes('Mendengar')) recognition.start();
             };
         }
     </script>
